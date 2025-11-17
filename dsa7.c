@@ -60,4 +60,9 @@ infix[len-1]='10';
 }
 infixtopostfix(infix);
 return 0;
+
 }
+output
+enter your infix:a+b*(c^d-e)^(f+g*h)-i
+Postfix Expression: abcd^e-fgh*+^*+i-
+
