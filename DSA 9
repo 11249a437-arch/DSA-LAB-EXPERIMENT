@@ -102,3 +102,24 @@ int main() {
 
     return 0;
 }
+output
+Enter the number of nodes to insert at the end: 3
+Enter value 1: 10
+Node inserted at the end
+Enter value 2: 20
+Node inserted at the end
+Enter value 3: 30
+Node inserted at the end
+
+Linked list: 10 -> 20 -> 30 -> NULL
+
+Enter a value to insert at the beginning: 5
+Node inserted at the beginning
+
+Linked list: 5 -> 10 -> 20 -> 30 -> NULL
+
+Enter a value and position to insert in the middle: 15 2
+Node inserted at position 2
+
+Linked list: 5 -> 15 -> 10 -> 20 -> 30 -> NULL
+
