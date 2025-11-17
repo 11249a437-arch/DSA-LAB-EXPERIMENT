@@ -1,103 +1,192 @@
 STRING REVERSAL 
 
-#include<stdio.h>
-#include<stdlib.h>
-int top=-1,MAX;
-char*stack
+#include <stdio.h>
+#include <stdlib.h>
+
+int top = -1;
+int MAX;
+char *stack;
+
 void display()
 {
- printf("there are %d elements in the stack\n",top+1);
- for(int i=top;i>=0;i--)
-{
- if(i=top){
- printf("|c|<top\n",stack[i]);
+    printf("There are %d elements in the stack\n", top + 1);
+    for (int i = top; i >= 0; i--)
+    {
+        if (i == top)
+            printf("| %c | <--- top\n", stack[i]);
+        else
+            printf("| %c |\n", stack[i]);
+    }
 }
+
 void push(char item)
 {
-if(top==MAX-1)
-{
-printf("stack is overflow");
+    if (top == MAX - 1)
+    {
+        printf("Stack Overflow!\n");
+    }
+    else
+    {
+        top++;
+        stack[top] = item;
+    }
 }
-else
-{
-top=top+1;
-stack[top]=item;
-}
+
 char pop()
 {
-char item;
-if(top==-1)
-{
-printf("stack is underflow/empty\n");
-return 0;'
+    if (top == -1)
+    {
+        printf("Stack Underflow!\n");
+        return '\0';
+    }
+    else
+    {
+        return stack[top--];
+    }
 }
-else
+
+void stringReversal()
 {
-item=stack[top];
-top=top-1;
-return item;
+    char string[100];
+    printf("Enter a string to reverse: ");
+    scanf("%s", string);
+
+    // Push all characters
+    for (int i = 0; string[i] != '\0'; i++)
+        push(string[i]);
+
+    printf("Reversed string: ");
+    // Pop all characters
+    while (top != -1)
+        printf("%c", pop());
+    printf("\n");
 }
-}
-void string reversal()
-{
-char string[MAX];
-printf("please enter the string of size %d to reverse ,MAX);
-scanf("%d",string);
-for(int c=0;c<MAX;c++)
-{
-push(string[c]);
-}
-printf("reversed string");
-for (int c=0;c<max;c++)
-{
-printf("%c",pop());
-}
+
 int main()
 {
-int operator=0;top=-1;
-printf("enter the size of char stack :");
-scanf("%d",&MAX);
-stack=realloc(stack,MAX);
-printf("\n which stack operation you want to do\n1.basic operation\n2.string reversal\n give your choice");
-scanf("%d",&operation);
-if(operation==2)
-{
-string reversal()
-goto start;
+    int operation;
+
+    printf("Enter stack size: ");
+    scanf("%d", &MAX);
+
+    stack = (char *)malloc(MAX * sizeof(char));
+
+    printf("\nChoose operation:");
+    printf("\n1. Basic Stack Operations");
+    printf("\n2. String Reversal");
+    printf("\nEnter your choice: ");
+    scanf("%d", &operation);
+
+    if (operation == 2)
+    {
+        stringReversal();
+        return 0;
+    }
+    else if (operation == 1)
+    {
+        while (1)
+        {
+            printf("\n1. Push");
+            printf("\n2. Pop");
+            printf("\n3. Display");
+            printf("\n4. Exit");
+            printf("\nEnter operation: ");
+            scanf("%d", &operation);
+
+            switch (operation)
+            {
+                case 1:
+                {
+                    char item;
+                    printf("Enter character to push: ");
+                    scanf(" %c", &item); 
+                    push(item);
+                    break;
+                }
+
+                case 2:
+                {
+                    char popped = pop();
+                    if (popped != '\0')
+                        printf("Popped: %c\n", popped);
+                    break;
+                }
+
+                case 3:
+                    display();
+                    break;
+
+                case 4:
+                    printf("Exiting...\n");
+                    return 0;
+
+                default:
+                    printf("Invalid option!\n");
+            }
+        }
+    }
+
+    return 0;
 }
-else if (operation==1)
-{
-printf("please choose stack operations to perform:");
-while(operation!=4)
-{
-printf("\n1.push\n2.pop\n3.display\n4.exit");
-scanf("%d",&operation){
-case 1:
- char item;
- printf("enter the character to push:");
-scanf("%c",&item);
-push(item);
-break;
-  case 2:
-  display();
-  break;
-  case 3:
- char c=pop();
- if(c!='10')
-{
-printf("element %c is popped out from top",c);
-break;
-case 4:
-return 0;
-default:
-printf("incorrect operation ");
-operation=0;
-break;
-}}}
-else
-{
-go to start;
-}
-return 0;
-}
+output
+Enter stack size: 20
+
+Choose operation:
+1. Basic Stack Operations
+2. String Reversal
+Enter your choice: 2
+Enter a string to reverse: hello
+
+Reversed string: olleh
+Enter stack size: 5
+
+Choose operation:
+1. Basic Stack Operations
+2. String Reversal
+Enter your choice: 1
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter operation: 1
+Enter character to push: A
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter operation: 1
+Enter character to push: B
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter operation: 3
+There are 2 elements in the stack
+| B | <--- top
+| A |
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter operation: 2
+Popped: B
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter operation: 3
+There are 1 elements in the stack
+| A |
+
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter operation: 4
+Exiting...
 
